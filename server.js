@@ -3,6 +3,13 @@ const connectDB = require('./config/db');
 
 const app = express();
 
+// INIT Middleware
+app.use(
+  express.json({
+    extended: false,
+  })
+);
+
 // Connect Database
 connectDB();
 
