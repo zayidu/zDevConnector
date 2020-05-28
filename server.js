@@ -10,7 +10,7 @@ app.use(
   })
 );
 
-// Connect Database
+// Connect Database - Zayidu
 connectDB();
 
 app.use('/api/users', require('./routes/api/users'));
