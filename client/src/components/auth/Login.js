@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from 'react';
 // import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ setAlert, login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -16,7 +20,9 @@ const Login = () => {
     // if (password !== password2) {
     //   console.log('Passwords do not match');
     // } else {
-    console.log(formData);
+    // console.log(formData);
+    login(email, password);
+
     // const newUser = {
     //   name,
     //   email,
@@ -39,6 +45,10 @@ const Login = () => {
     // }
     // }
   };
+  // Redirect if Logged in:
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Fragment>
       <h1 className="large text-primary">Sign In</h1>
@@ -75,4 +85,14 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, login })(Login);
