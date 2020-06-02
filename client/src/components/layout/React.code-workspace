@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "../../../.."
+    },
+    {
+      "path": "../../../../../devconnector_S4"
+    },
+    {
+      "path": "../../../../../devconnector_html_theme"
+    },
+    {
+      "path": "../../../../../devconnector_2.0-master"
+    }
+  ],
+  "settings": {}
+}

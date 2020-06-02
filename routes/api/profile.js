@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/Users');
+const Post = require('../../models/Post');
 
 // @route   Get api/profile
 // @desc    Register Profile
@@ -78,7 +79,8 @@ router.get('/user/:user_id', async (req, res) => {
 // @access  Private
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove user's posts
+    // Remove user's posts
+    await Profile.deleteMany({ user: req.user.id });
 
     // Remove Profile
     await Profile.findOneAndRemove({ user: req.user.id });
@@ -124,9 +126,10 @@ router.post(
       facebook,
       twitter,
       instagram,
-      linkdein,
+      linkedin,
     } = req.body;
 
+    // debugger;
     // Build profile Object
     const profileFields = {};
     profileFields.user = req.user.id;
@@ -137,42 +140,41 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      profileFields.skills = skills.split(',').map((skill) => skill.trim());
+      // profileFields.skills = skills.split(',').map((skill) => skill.trim());
+    }
+    // Build Social Object
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
 
-      // Build Social Object
-      profileFields.social = {};
-      if (youtube) profileFields.social.youtube = youtube;
-      if (twitter) profileFields.social.twitter = twitter;
-      if (facebook) profileFields.social.facebook = facebook;
-      if (linkdein) profileFields.social.linkdein = linkdein;
-      if (instagram) profileFields.social.instagram = instagram;
+    // console.log(profileFields.skills);
+    // res.send('Hello');
 
-      // console.log(profileFields.skills);
-      // res.send('Hello');
+    try {
+      let profile = await Profile.findOne({
+        user: req.user.id,
+      });
+      if (profile) {
+        profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        );
 
-      try {
-        let profile = await Profile.findOne({
-          user: req.user.id,
-        });
-        if (profile) {
-          profile = await Profile.findOneAndUpdate(
-            { user: req.user.id },
-            { $set: profileFields },
-            { new: true }
-          );
-
-          return res.json(profile);
-        }
-
-        // Create
-        profile = new Profile(profileFields);
-
-        await profile.save();
-        res.json(profile);
-      } catch (error) {
-        console.log(error.message);
-        res.status(500).send('Server Error');
+        return res.json(profile);
       }
+
+      // Create
+      profile = new Profile(profileFields);
+
+      await profile.save();
+      res.json(profile);
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send('Server Error');
     }
   }
 );
