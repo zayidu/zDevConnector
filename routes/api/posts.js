@@ -38,8 +38,8 @@ router.post(
         user: req.user.id,
       });
 
-      const post = newPost.save();
-      console.log(post);
+      const post = await newPost.save();
+      // console.log(post);
       res.json(post);
     } catch (error) {
       console.log(error.message);
@@ -94,6 +94,7 @@ router.delete('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'User Not Authorised' });
     }
     await post.remove();
+    res.json({ msg: 'Post removed' });
   } catch (error) {
     console.log(error.message);
     if (!error.kind === 'ObjectId')
