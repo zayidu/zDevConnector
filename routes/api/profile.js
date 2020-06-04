@@ -97,7 +97,6 @@ router.delete('/', auth, async (req, res) => {
 // @route   Post api/profile
 // @desc    Create/Update users profile
 // @access  Private
-
 router.post(
   '/',
   [
@@ -140,7 +139,7 @@ router.post(
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
-      // profileFields.skills = skills.split(',').map((skill) => skill.trim());
+      profileFields.skills = skills.split(',').map((skill) => skill.trim());
     }
     // Build Social Object
     profileFields.social = {};
