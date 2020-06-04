@@ -11,6 +11,9 @@
     },
     {
       "path": "../../../../../devconnector_2.0-master"
+    },
+    {
+      "path": "../../../../../devConnector_Z_v2"
     }
   ],
   "settings": {}

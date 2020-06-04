@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://zayidu:zayidu123@devconnector-9dtua.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "zSecetToken",
+  "githubClientID": "b15496a2d8442bd32da1",
+  "githubSecret": "b2a62055ebbce174c05219a5823ba71d9b233ae8"
+}
