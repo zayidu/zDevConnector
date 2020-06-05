@@ -312,6 +312,10 @@ button {
   opacity: 0.9;
 }
 
+.announcement {
+  background-color: lightyellow;
+}
+
 .navbar ul {
   display: flex;
 }

@@ -17,10 +17,15 @@ const Landing = ({ isAuthenticated }) => {
             Create a developer profile/portfolio, share posts and get help from
             other developers
           </p>
-          <p className="lead">
+          {/* <p className="lead">
             Check the Creator{' '}
             <Link to="/profile/5eccd4c4672f18b60a4e7bc4" className="lead">
               here!
+            </Link>
+          </p> */}
+          <p className="lead">
+            <Link to="/profile/5eccd4c4672f18b60a4e7bc4" className="lead">
+              Click here to know about the Creator!
             </Link>
           </p>
           <div className="buttons">
