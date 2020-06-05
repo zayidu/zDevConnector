@@ -25,6 +25,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className="hide-sm"> Logout </span>
         </a>
       </li>
+      <li>
+        <Link to="/posts/5eda1bc1ef03660017e3661d">Issues & Feedback</Link>
+      </li>
     </ul>
   );
 
@@ -46,7 +49,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> DevConnector
+          <i className="fas fa-code"></i> zDevConnector
         </Link>
       </h1>
       {!loading && (
