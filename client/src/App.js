@@ -89,3 +89,19 @@ export default App;
 // git push -u origin master
 // …or import code from another repository
 // You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+// Heroku Commands:
+// heroku login
+
+// Clone the repository
+// Use Git to clone powerful-brook-38361's source code to your local machine.
+
+// heroku git:clone -a powerful-brook-38361
+// cd powerful-brook-38361
+
+// Deploy your changes
+// Make some changes to the code you just cloned and deploy them to Heroku using Git.
+
+// git add .
+// git commit -am "make it better"
+// git push heroku master
