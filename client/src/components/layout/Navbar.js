@@ -21,13 +21,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
 
       <li>
-        <Link to="/posts/5eda1bc1ef03660017e3661d">Issues & Feedback</Link>
-      </li>
-      <li>
         <a href="https://github.com/zayidu/zDevConnector" target="_blank">
           {' '}
-          View zDevConnector on Github
+          <i className="fa fa-github " aria-hidden="true" />{' '}
+          <span className="hide-sm">View zDevConnector on Github</span>
         </a>
+      </li>
+      <li className="hide-sm">
+        <Link to="/posts/5eda1bc1ef03660017e3661d">
+          <span className="hide-sm">Issues & Feedback</span>
+        </Link>
       </li>
       <li>
         <a onClick={logout} href="#!">
@@ -43,7 +46,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <a href="https://github.com/zayidu/zDevConnector" target="_blank">
           {' '}
-          View zDevConnector on Github
+          <i className="fa fa-github " aria-hidden="true" />{' '}
+          <span className="hide-sm">View zDevConnector on Github</span>
         </a>
       </li>
       <li>
