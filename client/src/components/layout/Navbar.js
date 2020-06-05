@@ -19,20 +19,33 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <span className="hide-sm"> Dashboard</span>
         </Link>
       </li>
+
+      <li>
+        <Link to="/posts/5eda1bc1ef03660017e3661d">Issues & Feedback</Link>
+      </li>
+      <li>
+        <a href="https://github.com/zayidu/zDevConnector" target="_blank">
+          {' '}
+          View zDevConnector on Github
+        </a>
+      </li>
       <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt" />{' '}
           <span className="hide-sm"> Logout </span>
         </a>
       </li>
-      <li>
-        <Link to="/posts/5eda1bc1ef03660017e3661d">Issues & Feedback</Link>
-      </li>
     </ul>
   );
 
   const guestLinks = (
     <ul>
+      <li>
+        <a href="https://github.com/zayidu/zDevConnector" target="_blank">
+          {' '}
+          View zDevConnector on Github
+        </a>
+      </li>
       <li>
         <Link to="/profiles">Developers</Link>
       </li>
